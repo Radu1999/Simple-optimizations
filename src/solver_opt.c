@@ -9,7 +9,7 @@
 
 double *multiplyBTB(int N, double *B)
 {
-	double *C = malloc(N * N * sizeof(double));
+	double *C = calloc(N * N, sizeof(double));
 	double rez[] = {0, 0};
 	for (int i = 0; i < N; i++) {
 		register double *c = &C[i * N];
@@ -36,7 +36,7 @@ double *multiplyBTB(int N, double *B)
 
 double *multiplyAAT(int N, double *A)
 {
-	double *C = malloc(N * N * sizeof(double));
+	double *C = calloc(N * N, sizeof(double));
 
 	double rez[] = {0, 0};
 	for (int i = 0; i < N; i++) {
@@ -72,7 +72,7 @@ double *multiplyAAT(int N, double *A)
 
 double *multiplyBAAT(int N, double *A, double *B)
 {
-	double *C = malloc(N * N * sizeof(double));
+	double *C = calloc(N * N, sizeof(double));
 	double rez[] = {0, 0};
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {

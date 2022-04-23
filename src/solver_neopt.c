@@ -17,7 +17,7 @@
 
 double *multiply_with_transpose(int N, double *A, int triangularA, int right)
 {
-	double *C = malloc(N * N * sizeof(double));
+	double *C = calloc(N * N, sizeof(double));
 	for (int i = 0; i < N; i++) {
 		for (int k = 0; k < N; k++) {
 			double el = 0;
@@ -52,7 +52,7 @@ double *multiply(int N, double *A, int triangularA, double *B)
 
 double *add(int N, double *A, double *B)
 {
-	double *C = malloc(N * N * sizeof(double));
+	double *C = calloc(N * N, sizeof(double));
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
 			C[i * N + j] = A[i * N + j] + B[i * N + j];
