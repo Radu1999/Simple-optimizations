@@ -37,24 +37,26 @@ double *multiplyAAT(int N, double *A)
 	double *C = calloc(N * N, sizeof(double));
 
 	double rez[] = {0, 0};
+	register double *reg_rez = rez;
 	register int i_pos = 0;
 	for (register int i = 0; i < N; ++i, i_pos += N) {
 		register int j_pos = i_pos;
 		for (register int j = i; j < N; ++j, j_pos += N) {
-			register double el = 0;
+			*reg_rez = 0;
+			*(reg_rez + 1) = 0;
 			for (register int k = i % 2 == 0 ? i : i - 1; k < N;
 			     k += 2) {
 				asm("movapd (%0), %%xmm0;"
 				    "movapd (%1), %%xmm1;"
 				    "mulpd %%xmm1, %%xmm0;"
+				    "addpd (%2), %%xmm0;"
 				    "movapd %%xmm0, (%2);"
 				    :
 				    : "a"(A + i_pos + k), "b"(A + j_pos + k),
-				      "r"(rez)
+				      "r"(reg_rez)
 				    : "xmm0", "xmm1");
-				el += rez[0] + rez[1];
 			}
-			C[i_pos + j] = el;
+			C[i_pos + j] = *reg_rez + *(reg_rez + 1);
 		}
 	}
 
