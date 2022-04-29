@@ -29,12 +29,11 @@ Grupă: 335CA
   - Varianta blas are si mai putine branch uri decat opt_m, ceea ce sugereaza evitare a testarii de conditii. (Misspredict rate-ul e mai mare in cazul blas, totusi).
   - De asemenea, blas are mai putine accesuri in cache decat opt_m, atat in instructiuni cat si in date.
 
-## Grafic
+## Grafice
 
-- Pentru realizarea graficului s-au masurat timpii de rulare pentru valori ale lui n
+- Pentru realizarea graficelor s-au masurat timpii de rulare pentru valori ale lui n
   intr 200 si 1600 cu pas de 200.
-- Conform graficului, performantele variantei neoptimizate sunt dezastroase.
-
+- Conform graficului care compara solutiile, performantele variantei neoptimizate sunt dezastroase.
 - Se observa o tendinta exponentiala in cazul tuturor celor 3 variante.
 
 - Timpii obtinuti (s):
